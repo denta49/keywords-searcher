@@ -68,5 +68,6 @@ Cześć! Poniżej zamieszczam wszystkie zmiany, któ®ych dokonałem, wraz z ich
 30. Przydałaby się obsługa błędów, ładowania itd. ale nasze mockData nie symuluje tego a uznałem, że zmiany w tym byłyby za dużym szarżem z mojej strony, więc zostawiłem, jak jest, ale sygnalizuje, że to by się przydało.
 31. Wiadomo - testy również byłyby istotnym krokiem do dodania.
 32. UI w zasadzie nie zmieniałem, jedynie zmiany wynikajace z zastosowania tailwinda wszędzie tam, gdzie były inliny oraz te wynikające z logiki renderowania tabelki.
+33. Rzcuiłem jeszcze okiem na metatagi i brakowało description, dodałem.
 
 To chyba wszystko, dzięki bardzo za możliwość zmierzenia się z zadaniem i będę wdzięczny za feedback! :)
