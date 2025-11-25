@@ -9,14 +9,9 @@ const TableRow: FunctionComponent<Props> = ({ component, index }) => {
   return (
     <div
       key={index}
-      style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 120px 80px",
-        padding: "12px",
-        background: index % 2 === 0 ? "#ffffff" : "#f9fafb",
-        borderBottom: "1px solid #e5e7eb",
-        alignItems: "center",
-      }}
+      className={`grid [grid-template-columns:1fr_120px_80px] items-center border-b border-gray-200 p-3 ${
+        index % 2 === 0 ? "bg-white" : "bg-gray-50"
+      }`}
     >
       {component}
     </div>

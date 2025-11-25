@@ -47,3 +47,5 @@ Cześć! Poniżej zamieszczam wszystkie zmiany, któ®ych dokonałem, wraz z ich
 19. Na tym zakończyłem basic code-splitting.
 
 ## Refaktoryzacja styli
+
+20. Jak wspomniałem wcześniej, usunąłem wszelkie style inlinowe i zastąpiłem je tailwindowymi klasami. Tutaj jednak napotkałem problem - nie wszystkie tailwindowe style działały, bo tailwind nie był dobrze skonfigurowany - resetowanie styli w index.css było poza layers, więc poprawiłem.

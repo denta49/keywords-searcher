@@ -5,7 +5,7 @@ type Props = {
 };
 
 const TableHeader: FunctionComponent<Props> = ({ content }) => {
-  return <h2 style={{ fontSize: "18px", fontWeight: "bold", marginBottom: "10px" }}>{content}</h2>;
+  return <h2 className="mb-2.5 text-lg font-bold">{content}</h2>;
 };
 
 export default TableHeader;

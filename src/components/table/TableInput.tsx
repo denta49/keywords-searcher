@@ -13,13 +13,7 @@ const TableInput: FunctionComponent<Props> = ({ value, onChange, placeholder }) 
       value={value}
       onChange={onChange}
       placeholder={placeholder}
-      style={{
-        padding: "10px",
-        width: "100%",
-        border: "1px solid #ccc",
-        borderRadius: "6px",
-        fontSize: "14px",
-      }}
+      className="w-full rounded-md border border-gray-300 p-2.5 text-sm"
     />
   );
 };

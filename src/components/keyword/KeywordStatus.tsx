@@ -7,21 +7,11 @@ type Props = {
 
 const KeywordStatus: FunctionComponent<Props> = ({ status }) => {
   return (
-    <div
-      style={{
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
+    <div className="flex justify-center">
       <span
-        style={{
-          padding: "4px 12px",
-          borderRadius: "12px",
-          fontSize: "12px",
-          fontWeight: "500",
-          background: status === "active" ? "#d1fae5" : "#fee2e2",
-          color: status === "active" ? "#065f46" : "#991b1b",
-        }}
+        className={`rounded-xl px-3 py-1 text-xs font-medium ${
+          status === "active" ? "bg-emerald-100 text-emerald-800" : "bg-red-100 text-red-800"
+        }`}
       >
         {status === "active" ? "Aktywny" : "Wstrzymany"}
       </span>
