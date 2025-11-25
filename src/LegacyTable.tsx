@@ -24,20 +24,20 @@ const LegacyTable = () => {
   }, [search, data]);
 
   return (
-    <div style={{ padding: "20px" }}>
-      <div style={{ marginBottom: "20px" }}>
+    <div className="p-5">
+      <div className="mb-5">
         <TableHeader content={`Słowa Kluczowe (${filteredData.length} z ${data.length})`} />
+
         <TableInput
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          placeholder={"Wyszukaj słowo kluczowe..."}
+          placeholder="Wyszukaj słowo kluczowe..."
         />
       </div>
       <TableColumns columns={["słowo kluczowe", "wartość", "status"]} />
-
-      <div style={{ display: "flex", flexDirection: "column" }}>
+      <div className="flex flex-col">
         {filteredData.map((item, index) => (
-          <TableRow component={<KeywordRow item={item} />} index={index} />
+          <TableRow key={item.id ?? index} component={<KeywordRow item={item} />} />
         ))}
       </div>
     </div>

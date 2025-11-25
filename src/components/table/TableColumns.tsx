@@ -6,21 +6,10 @@ type Props = {
 
 const TableColumns: FunctionComponent<Props> = ({ columns }) => {
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "1fr 120px 80px",
-        padding: "12px",
-        background: "#f9fafb",
-        fontWeight: "600",
-        fontSize: "12px",
-        color: "#6b7280",
-        borderBottom: "2px solid #e5e7eb",
-      }}
-    >
+    <div className="grid [grid-template-columns:1fr_120px_80px] border-b-2 border-gray-200 bg-gray-50 p-3 text-xs font-semibold text-gray-500">
       {columns &&
         columns.map((col) => (
-          <div key={col} style={{ textTransform: "uppercase" }}>
+          <div key={col} className="uppercase">
             {col}
           </div>
         ))}

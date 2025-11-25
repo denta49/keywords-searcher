@@ -6,7 +6,7 @@ type Props = {
 };
 
 const KeywordName: FunctionComponent<Props> = ({ name }) => {
-  return <div style={{ fontSize: "14px", color: "#111827" }}>{name}</div>;
+  return <div className="text-sm text-gray-900">{name}</div>;
 };
 
 export default KeywordName;
