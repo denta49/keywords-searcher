@@ -11,6 +11,7 @@ import KeywordValue from "./components/keyword/KeywordValue.tsx";
 import KeywordStatus from "./components/keyword/KeywordStatus.tsx";
 import columns from "./components/table/TableColumnsDefs.ts";
 import useDebouncedValue from "./hooks/useDebouncedValue.ts";
+import TableBodyVirtualized from "./components/table/TableBodyVirtualized.tsx";
 
 const LegacyTable = () => {
   const [data, setData] = useState<KeywordType[]>([]);
@@ -41,16 +42,22 @@ const LegacyTable = () => {
       <TableContent columns={columns}>
         <TableColumns />
         <div className="flex flex-col">
-          {filteredData.map((item) => (
-            <TableRow
-              key={item.id}
-              cells={{
-                keyword: <KeywordName name={item.name} />,
-                value: <KeywordValue value={item.value} />,
-                status: <KeywordStatus status={item.status} />,
-              }}
-            />
-          ))}
+          <TableBodyVirtualized
+            items={filteredData}
+            estimateRowHeight={52}
+            className="h-[560px] overflow-auto"
+            renderRow={(item, index) => (
+              <TableRow
+                key={item.id}
+                index={index}
+                cells={{
+                  keyword: <KeywordName name={item.name} />,
+                  value: <KeywordValue value={item.value} />,
+                  status: <KeywordStatus status={item.status} />,
+                }}
+              />
+            )}
+          />
         </div>
       </TableContent>
     </div>

@@ -1,16 +1,22 @@
 import React, { FunctionComponent } from "react";
-import { useTable } from "../../context/TableContentContext.tsx";
-import { cn } from "../../lib/cn.ts";
+import { useTable } from "../../context/TableContentContext";
+import { cn } from "../../lib/cn";
 
 type Props = {
+  index: number;
   cells: Record<string, React.ReactNode>;
 };
-const TableRow: FunctionComponent<Props> = ({ cells }) => {
+
+const TableRow: FunctionComponent<Props> = ({ index, cells }) => {
   const { columns, template } = useTable();
+
   return (
     <div
       style={{ gridTemplateColumns: template }}
-      className="grid items-center border-b border-gray-200 p-3 odd:bg-white even:bg-gray-50"
+      className={cn(
+        "grid items-center border-b border-gray-200 p-3",
+        index % 2 === 0 ? "bg-white" : "bg-gray-50",
+      )}
     >
       {columns.map((c) => (
         <div key={c.key} className={cn("min-w-0", c.cellClassName)}>

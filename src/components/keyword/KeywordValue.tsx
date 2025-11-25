@@ -1,4 +1,4 @@
-import { FunctionComponent, useMemo } from "react";
+import { FunctionComponent } from "react";
 import KeywordType from "../../types/KeywordType.ts";
 
 type Props = {
@@ -6,12 +6,9 @@ type Props = {
 };
 
 const KeywordValue: FunctionComponent<Props> = ({ value }) => {
-  const transformedValue = useMemo(() => {
-    if (!value) return "unknown";
-    return value.toFixed(2);
-  }, [value]);
+  const text = value == null ? "unknown" : value.toFixed(2);
 
-  return <div className="text-right text-sm font-medium text-gray-700">{transformedValue}</div>;
+  return <div className="text-right text-sm font-medium text-gray-700 tabular-nums">{text}</div>;
 };
 
 export default KeywordValue;
