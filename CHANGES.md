@@ -32,11 +32,18 @@ Cześć! Poniżej zamieszczam wszystkie zmiany, któ®ych dokonałem, wraz z ich
     natomiast co ważne, tutaj mamy tailwinda, więc style są wbudowane w JSX - to swoją drogą też wymagało refactoru, bo
     mamy i tailwinda i zwykłe style inlinowe, co jest antypatternem i zdecydowałem, że wszystkie style zostaną zmienione
     na tailwindowe.
-11. W ten sposób powstały następujące komponenty: 12. TableHeader.tsx; 13. TableInput.tsx; 14. TableRow.tsx; - to komponent agnostyczny (taki powinen być - nie powienen "wiedzieć" co renderuje, dlatego
-    jedynie przyjmuje komponent do wyrenderowania, wrapuje w style i renderuje - wzorzec HOC). 15. KeywordRow.tsx - łączy poniższe i jest rendoerowany przez powyższy. 16. KeywordName.tsx; 17. KeywordStatus.tsx; 18. KeywordValue.tsx - rozdzieliłem te trzy rzeczy. To może być lekki
+11. W ten sposób powstały następujące komponenty:
+12. TableHeader.tsx;
+13. TableInput.tsx;
+14. TableRow.tsx; - to komponent agnostyczny (taki powinen być - nie powienen "wiedzieć" co renderuje, dlatego
+    jedynie przyjmuje komponent do wyrenderowania, wrapuje w style i renderuje - wzorzec HOC).
+15. KeywordRow.tsx - łączy poniższe i jest rendoerowany przez powyższy.
+16. KeywordName.tsx;
+17. KeywordStatus.tsx;
+18. KeywordValue.tsx - rozdzieliłem te trzy rzeczy. To może być lekki
     overkill, ale uważam, że nie powinniśmy mimo wszystko w TableRow.tsx trzymać logiki wyświetlania keywordu. Row
     powinien być agnostyczny, do niego po prostu wrzucamy content a nie trzymamy logiki tego, co ma być wyświetlane,
     dlatego zrobiłem trzy komponenty.
-12. Na tym zakończyłem basic code-splitting.
+19. Na tym zakończyłem basic code-splitting.
 
 ## Refaktoryzacja styli
