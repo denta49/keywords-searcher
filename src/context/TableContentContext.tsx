@@ -4,6 +4,7 @@ import TableColumnDefType from "../types/TableColumnDefType.ts";
 type TableCtx = { columns: TableColumnDefType[]; template: string };
 const TableContentContext = createContext<TableCtx | null>(null);
 
+// eslint-disable-next-line react-refresh/only-export-components
 export function useTable() {
   const ctx = useContext(TableContentContext);
   if (!ctx) throw new Error("Table components must be used inside <Table />");
