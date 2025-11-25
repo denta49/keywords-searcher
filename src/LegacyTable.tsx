@@ -5,7 +5,11 @@ import TableHeader from "./components/table/TableHeader.tsx";
 import TableInput from "./components/table/TableInput.tsx";
 import TableRow from "./components/table/TableRow.tsx";
 import TableColumns from "./components/table/TableColumns.tsx";
-import KeywordRow from "./components/keyword/KeywordRow.tsx";
+import { TableContent } from "./context/TableContentContext.tsx";
+import KeywordName from "./components/keyword/KeywordName.tsx";
+import KeywordValue from "./components/keyword/KeywordValue.tsx";
+import KeywordStatus from "./components/keyword/KeywordStatus.tsx";
+import columns from "./components/table/TableColumnsDefs.ts";
 
 const LegacyTable = () => {
   const [data, setData] = useState<KeywordType[]>([]);
@@ -34,12 +38,21 @@ const LegacyTable = () => {
           placeholder="Wyszukaj słowo kluczowe..."
         />
       </div>
-      <TableColumns columns={["słowo kluczowe", "wartość", "status"]} />
-      <div className="flex flex-col">
-        {filteredData.map((item, index) => (
-          <TableRow key={item.id ?? index} component={<KeywordRow item={item} />} />
-        ))}
-      </div>
+      <TableContent columns={columns}>
+        <TableColumns />
+        <div className="flex flex-col">
+          {filteredData.map((item) => (
+            <TableRow
+              key={item.id}
+              cells={{
+                keyword: <KeywordName name={item.name} />,
+                value: <KeywordValue value={item.value} />,
+                status: <KeywordStatus status={item.status} />,
+              }}
+            />
+          ))}
+        </div>
+      </TableContent>
     </div>
   );
 };
