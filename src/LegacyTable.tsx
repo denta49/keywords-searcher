@@ -37,7 +37,7 @@ const LegacyTable = () => {
       <TableColumns columns={["słowo kluczowe", "wartość", "status"]} />
       <div className="flex flex-col">
         {filteredData.map((item, index) => (
-          <TableRow key={item.id ?? index} component={<KeywordRow item={item} />} index={index} />
+          <TableRow key={item.id ?? index} component={<KeywordRow item={item} />} />
         ))}
       </div>
     </div>

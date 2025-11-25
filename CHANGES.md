@@ -49,3 +49,5 @@ Cześć! Poniżej zamieszczam wszystkie zmiany, któ®ych dokonałem, wraz z ich
 ## Refaktoryzacja styli
 
 20. Jak wspomniałem wcześniej, usunąłem wszelkie style inlinowe i zastąpiłem je tailwindowymi klasami. Tutaj jednak napotkałem problem - nie wszystkie tailwindowe style działały, bo tailwind nie był dobrze skonfigurowany - resetowanie styli w index.css było poza layers, więc poprawiłem.
+21. Następnym krokiem było dodanie helpera determinującego style i label w KeywordStatus. Żeby to było zgodne ze sztuką dodałem cn i twmerge.
+22. Tak samo w KeywordRow dodałem determinowanie backgroundu w zalezności od tego, czy row jest parzyty czy nie za pomocą tailwinda, a nie JS i indexu.
