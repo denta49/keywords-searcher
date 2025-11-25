@@ -1,21 +1,25 @@
-import React, { FunctionComponent } from "react";
+import React from "react";
+import { cn } from "../../lib/cn.ts";
 
-type Props = {
+type TableInputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, "value" | "onChange"> & {
   value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  placeholder: string;
+  onValueChange: (value: string) => void;
 };
 
-const TableInput: FunctionComponent<Props> = ({ value, onChange, placeholder }) => {
-  return (
-    <input
-      type="text"
-      value={value}
-      onChange={onChange}
-      placeholder={placeholder}
-      className="w-full rounded-md border border-gray-300 p-2.5 text-sm"
-    />
-  );
-};
+const TableInput = React.forwardRef<HTMLInputElement, TableInputProps>(
+  ({ value, onValueChange, className, ...props }, ref) => {
+    return (
+      <input
+        ref={ref}
+        type="text"
+        value={value}
+        onChange={(e) => onValueChange(e.target.value)}
+        className={cn("w-full rounded-md border border-gray-300 p-2.5 text-sm", className)}
+        {...props}
+      />
+    );
+  },
+);
 
+TableInput.displayName = "TableInput";
 export default TableInput;

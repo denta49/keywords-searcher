@@ -6,7 +6,9 @@ type Props = {
 };
 
 const KeywordValue: FunctionComponent<Props> = ({ value }) => {
-  return <div className="text-right text-sm font-medium text-gray-700">{value.toFixed(2)}</div>;
+  const text = value == null ? "unknown" : value.toFixed(2);
+
+  return <div className="text-right text-sm font-medium text-gray-700 tabular-nums">{text}</div>;
 };
 
 export default KeywordValue;

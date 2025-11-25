@@ -52,3 +52,11 @@ Cześć! Poniżej zamieszczam wszystkie zmiany, któ®ych dokonałem, wraz z ich
 21. Następnym krokiem było dodanie helpera determinującego style i label w KeywordStatus. Żeby to było zgodne ze sztuką dodałem cn i twmerge.
 22. Tak samo w KeywordRow dodałem determinowanie backgroundu w zalezności od tego, czy row jest parzyty czy nie za pomocą tailwinda, a nie JS i indexu.
 23. Pojawił się jednak taki problem, który polegał na tym, że grida wiersza i grida nazw kolumn trzeba definiować oddzielnie. Po pierwsze i tak się to rozjeżdżało a po drugie gdybym robił to od początku, od razu zrobiłbym tak, żeby było jedno źródło prawdy. Nie wiem, czy tutaj nie przeszarżowałem, ale zdecydowałem się to poprawić za pomocą contextu - jest to dużo bardziej zgodne ze sztuką robienia skalowalnych tabelek - definiujemy wszystko w jednym miejscu i mamy wszystkie style i wszystko ładnie zachowane.
+
+## Refaktoryzacja logiki
+
+24. Wreszcie zacząłem refactor logiki. Na pierwszy ogień idzie TableInput.tsx - tutaj dodałem typu Inputa jako takiego, gdybyśmy kiedyś chcieli je przekazać plus forwardRef, gdybyśmy chcieli użyć. To nie React 19 więc jeszczeużywamy forwarda.
+25. Sama logika filtrowania działała tak, że filtruje po każdej wpisanej literze, co jest zabójstwem dla performacnu - zdecydowalem sie dodac debouncing.
+26. Po dodaniu debouncingu od razu zmienia się logika samego wyszukiwania w tabelce - mielismy dwa razu ustawiany stan w useEffece, teraz jest poprawnie.
+27. W KeywordValue dodałem osobną funkcję do transformowania value.
+28. Wreszcie po refaktorze logiki nadszedł czas na optymalizację - na ten moment po prostu wrzucamy 10k elementów na stronę od razu, co też jest zabójstwem performancu. Realnie może API byłoby inne, np. z paginacją, ale tutaj pozostaje nam użycie wirtualizacji, dlatego stwotzyłem komponent TableBodyVirtualized.tsx. Wirtualizacja bardzo mocno przyspiesza nam działanie apki. Możnaby ofc też dodać React.memo() ale to by wymagało odwrócenia wcześniej napisanej przeze mnie logiki, a wierualizacja tak mocno pomaga, że uznałem, że to wystarczy.
