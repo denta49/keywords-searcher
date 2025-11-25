@@ -60,3 +60,13 @@ Cześć! Poniżej zamieszczam wszystkie zmiany, któ®ych dokonałem, wraz z ich
 26. Po dodaniu debouncingu od razu zmienia się logika samego wyszukiwania w tabelce - mielismy dwa razu ustawiany stan w useEffece, teraz jest poprawnie.
 27. W KeywordValue dodałem osobną funkcję do transformowania value.
 28. Wreszcie po refaktorze logiki nadszedł czas na optymalizację - na ten moment po prostu wrzucamy 10k elementów na stronę od razu, co też jest zabójstwem performancu. Realnie może API byłoby inne, np. z paginacją, ale tutaj pozostaje nam użycie wirtualizacji, dlatego stwotzyłem komponent TableBodyVirtualized.tsx. Wirtualizacja bardzo mocno przyspiesza nam działanie apki. Możnaby ofc też dodać React.memo() ale to by wymagało odwrócenia wcześniej napisanej przeze mnie logiki, a wierualizacja tak mocno pomaga, że uznałem, że to wystarczy.
+
+## Podsumowanie i co można jeszcze dodać
+
+29. Na tym zakończyłem refaktoryzację. Uważam, że kod jest teraz dużo czytelniejszy, lepiej podzielony, łatwiejszy w
+    utrzymaniu i skalowalny.
+30. Przydałaby się obsługa błędów, ładowania itd. ale nasze mockData nie symuluje tego a uznałem, że zmiany w tym byłyby za dużym szarżem z mojej strony, więc zostawiłem, jak jest, ale sygnalizuje, że to by się przydało.
+31. Wiadomo - testy również byłyby istotnym krokiem do dodania.
+32. UI w zasadzie nie zmieniałem, jedynie zmiany wynikajace z zastosowania tailwinda wszędzie tam, gdzie były inliny oraz te wynikające z logiki renderowania tabelki.
+
+To chyba wszystko, dzięki bardzo za możliwość zmierzenia się z zadaniem i będę wdzięczny za feedback! :)
