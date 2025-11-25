@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { generateData } from "./mockData.ts";
 import KeywordType from "./types/KeywordType.ts";
 import TableHeader from "./components/table/TableHeader.tsx";
@@ -10,31 +10,31 @@ import KeywordName from "./components/keyword/KeywordName.tsx";
 import KeywordValue from "./components/keyword/KeywordValue.tsx";
 import KeywordStatus from "./components/keyword/KeywordStatus.tsx";
 import columns from "./components/table/TableColumnsDefs.ts";
+import useDebouncedValue from "./hooks/useDebouncedValue.ts";
 
 const LegacyTable = () => {
   const [data, setData] = useState<KeywordType[]>([]);
-  const [filteredData, setFilteredData] = useState<KeywordType[]>([]);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState<string>("");
 
   useEffect(() => {
-    const rawData = generateData();
-    setData(rawData);
-    setFilteredData(rawData);
+    setData(generateData());
   }, []);
 
-  useEffect(() => {
-    const result = data.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()));
-    setFilteredData(result);
-  }, [search, data]);
+  const debouncedSearch = useDebouncedValue(search, 250);
+
+  const filteredData = useMemo(() => {
+    const q = debouncedSearch.trim().toLowerCase();
+    if (!q) return data;
+    return data.filter((item) => item.name.toLowerCase().includes(q));
+  }, [data, debouncedSearch]);
 
   return (
     <div className="p-5">
       <div className="mb-5">
         <TableHeader content={`Słowa Kluczowe (${filteredData.length} z ${data.length})`} />
-
         <TableInput
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onValueChange={setSearch}
           placeholder="Wyszukaj słowo kluczowe..."
         />
       </div>
